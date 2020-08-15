@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+.title1 {
+  font-family: "Spartan", sans-serif;
+  font-size: 32.5pt;
+  font-weight: 900;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title2 {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(10, 36, 114, 0.5) 10%,
+      rgba(0, 0, 0, 0)
+    ),
+    url(./assets/images/ian-keefe-nGOK_EqQpY4-unsplash.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.jumbotron {
+  background-image: linear-gradient(
+    45deg,
+    rgba(14, 107, 168, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  color: #001c55;
+  font-family: "Spartan", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.title3 {
+  font-weight: 600;
+  font-size: 25pt;
+}
+.title4 {
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+  margin-top: 10px;
+  font-size: 15pt;
+}
+
+p {
+  font-size: 15pt;
+}
+
+a:link {
+  text-decoration: none;
+  color: #001c55;
+}
+a:hover {
+  text-decoration: underline;
 }
