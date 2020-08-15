@@ -7,16 +7,16 @@ import GMaps from "./components/Map";
 function App() {
   return (
     <div className="main">
-      <Nav className="justify-content-center">
-        <Nav.Item className="text-center mt-4">
-          <h3>
-            <span className="title1">CESAR MARINE</span>
-            <br />
-            <span className="title2 mt-1">CANVAS & UPHOLSTERY</span>
-          </h3>
-        </Nav.Item>
-      </Nav>
       <Container>
+        <Nav className="justify-content-center">
+          <Nav.Item className="text-center mt-4">
+            <h3>
+              <span className="title1">CESAR MARINE</span>
+              <br />
+              <span className="title2 mt-1">CANVAS & UPHOLSTERY</span>
+            </h3>
+          </Nav.Item>
+        </Nav>
         <Row className="mt-5">
           <Col>
             <Jumbotron className="jumbotron">
