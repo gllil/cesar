@@ -116,11 +116,11 @@ function App() {
                         Email:
                         <br />
                         <a
-                          href="mailto:CesarDesignWorks@gmail.com"
+                          href="mailto:CesarSignWorks@gmail.com"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          CesarDesignWorks@gmail.com
+                          CesarSignWorks@gmail.com
                         </a>
                       </p>
                     </Col>
