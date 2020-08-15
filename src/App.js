@@ -73,7 +73,7 @@ function App() {
                     className="mt-2"
                     href="#contact"
                   >
-                    Get a Free Quote
+                    Contact Us For More Information
                   </Button>
                 </Col>
               </Row>
