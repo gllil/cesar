@@ -50,7 +50,7 @@ function App() {
               <Row>
                 <Col xs={12} md={6}>
                   <ul>
-                    <li>Aluminum & Steel Frames</li>
+                    <li>Commercial & Residential Awnings</li>
                     <li>Bimini Tops</li>
                     <li>Enclosures</li>
                     <li>Mooring Covers</li>
