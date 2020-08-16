@@ -1,12 +1,13 @@
 import React, { memo } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+require("dotenv").config();
 
 const GMaps = () => {
   const onLoad = (marker) => {
     console.log("marker: ", marker);
   };
   return (
-    <LoadScript googleMapsApiKey="AIzaSyAweLAvW-Ep-EB-lDQrlpaPRZ5dBIgJeOQ">
+    <LoadScript googleMapsApiKey="secret">
       <GoogleMap
         mapContainerStyle={{
           width: "90%",
