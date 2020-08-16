@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Nav, Container, Jumbotron, Row, Col, Button } from "react-bootstrap";
 import GMaps from "./components/Map";
+import logo from "./assets/images/cesarlogo4.png";
 // import background from "./assets/images/background.jpg";
 
 function App() {
@@ -11,9 +12,19 @@ function App() {
         <Nav className="justify-content-center">
           <Nav.Item className="text-center mt-4">
             <h3>
-              <span className="title1">CESAR MARINE</span>
+              <span className="title1">
+                CES
+                <img
+                  src={logo}
+                  width="45px"
+                  alt="Cesar Logo"
+                  // style={{ paddingBott }}
+                  className="pb-3"
+                />
+                R MARINE
+              </span>
               <br />
-              <span className="title2 mt-1">CANVAS & UPHOLSTERY</span>
+              <span className="title2">CANVAS & UPHOLSTERY</span>
             </h3>
           </Nav.Item>
         </Nav>

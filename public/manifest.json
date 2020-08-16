@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "images": "../src/assets/images/ian-keefe-nGOK_EqQpY4-unsplash.jpg",
+  "images": "../src/assets/images",
   "start_url": "https://cesarcanvasupholstery.com/",
   "display": "standalone",
   "theme_color": "#000000",
