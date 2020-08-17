@@ -24,7 +24,9 @@ function App() {
                 R MARINE
               </span>
               <br />
-              <span className="title2">CANVAS & UPHOLSTERY</span>
+              <span className="title2">
+                CANVAS & UPHOLSTERY <span className="title2Sub">LLC</span>
+              </span>
             </h3>
           </Nav.Item>
         </Nav>
@@ -70,7 +72,7 @@ function App() {
                 <Col xs={12} md={6}>
                   <ul>
                     <li>Interior & Exterior Cushions</li>
-                    <li>Eisenglass Replacement</li>
+                    <li>Eisenglass/Isinglass Replacement</li>
                     <li>Zipper Replacement</li>
                     <li>And Much More</li>
                   </ul>
@@ -142,6 +144,16 @@ function App() {
                 </Col>
               </Row>
             </Jumbotron>
+          </Col>
+        </Row>
+      </Container>
+      <Container fluid>
+        <Row>
+          <Col className="footer text-center">
+            <p>
+              <span>©</span> Copyright 2020-2023 <br /> Cesar Upholstery &
+              Canvas LLC <br /> Insured
+            </p>
           </Col>
         </Row>
       </Container>
