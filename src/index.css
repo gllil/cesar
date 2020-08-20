@@ -5,9 +5,233 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(10, 36, 114, 0.5) 10%,
+      rgba(0, 0, 0, 0)
+    ),
+    url(./assets/images/ian-keefe-nGOK_EqQpY4-unsplash.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.title1 {
+  font-family: "Spartan", sans-serif;
+  font-size: 36.2pt;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+}
+
+.title1:link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.title2 {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+}
+
+.title2Sub {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+  font-size: 15pt;
+}
+
+.main {
+  min-height: 89.1vh;
+  height: 100%;
+}
+
+.jumbotron {
+  background-image: linear-gradient(
+    45deg,
+    rgba(14, 107, 168, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  color: #001c55;
+  font-family: "Spartan", sans-serif;
+}
+
+.title3 {
+  font-weight: 600;
+  font-size: 25pt;
+}
+.title4 {
+  font-weight: 600;
+}
+
+li {
+  margin-top: 10px;
+  font-size: 15pt;
+}
+
+p {
+  font-size: 15pt;
+}
+
+.emailLink:link {
+  text-decoration: none;
+  color: #001c55;
+}
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+  background-image: linear-gradient(
+    to top,
+    rgba(10, 36, 114, 0.5),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.nav-link {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  background-color: #138496;
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+  display: none;
+}
+
+.homeBtn:hover {
+  color: #001c55;
+}
+.aboutBtn:hover {
+  color: #001c55;
+}
+.galleryBtn:hover {
+  color: #001c55;
+}
+
+.input {
+  display: none;
+}
+
+.label {
+  width: 180px;
+  height: 60px;
+  font-size: 15pt;
+  color: #fff;
+  background-color: #138496;
+  padding: 10px 40px;
+  margin: 10px;
+  border-radius: 25px;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+.label:hover {
+  opacity: 80%;
+  color: #001c55;
+}
+
+.images {
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 150%;
+  height: 250px;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+.imageWrap {
+  overflow: hidden;
+}
+
+.modalImage {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+  border: 3px solid #fff;
+}
+
+.deleteBtn {
+  color: red;
+  position: relative;
+  bottom: 30px;
+  left: 10px;
+  padding: 1px;
+  background-color: #fff;
+  width: 15px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+.deleteBtn:hover {
+  opacity: 80%;
+}
+
+.error {
+  font-family: "Spartan", sans-serif;
+  color: #fff;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carouselImage {
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 150%;
+  max-height: 600px;
+}
+
+.carouselWrapper {
+  overflow: hidden;
+  margin: 40px;
+}
+
+@media only screen and (max-width: 990px) {
+  .carouselImage {
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 150%;
+    max-height: 432px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .bottom-nav {
+    display: block;
+  }
+
+  .main {
+    margin-bottom: 56px;
+  }
+
+  .footer {
+    margin-bottom: 56px;
+  }
+
+  .carouselImage {
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 150%;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 574px) {
+  .images {
+    min-height: 100%;
+    min-width: 80%;
+    max-width: 150%;
+  }
 }
