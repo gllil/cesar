@@ -8,7 +8,14 @@ const Footer = () => {
         <Col className="footer text-center">
           <p>
             <span>©</span> Copyright 2020-2023 <br /> Cesar Upholstery & Canvas
-            LLC <br /> Insured
+            LLC <br /> Insured <br />{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/cesarcanvasupholstery/"
+            >
+              <i class="fab fa-facebook-square fa-lg"></i>
+            </a>
           </p>
         </Col>
       </Row>

@@ -1,6 +1,7 @@
 import React from "react";
 import useFirestore from "../../hooks/useFirestore";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 const GalleryImageGrid = ({ setSelectedImg, setOpen }) => {
   const { docs } = useFirestore("images");
@@ -11,7 +12,7 @@ const GalleryImageGrid = ({ setSelectedImg, setOpen }) => {
     setOpen(true);
   };
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
         {docs &&
           docs.map((doc) => (
@@ -21,14 +22,19 @@ const GalleryImageGrid = ({ setSelectedImg, setOpen }) => {
                   className="imageWrap mt-2 text-center"
                   onClick={(e) => handleClick(e, doc.url)}
                 >
-                  <Image src={doc.url} rounded className="images" />
+                  <motion.img
+                    whileHover={{ scale: 1.2 }}
+                    src={doc.url}
+                    rounded
+                    className="images"
+                  />
                 </Col>
               </Row>
             </Col>
           ))}
         {docs.length === 0 && (
           <Col className="text-center mt-3 text-white">
-            <h3>Photos coming soon</h3>
+            <Spinner animation="border" />
           </Col>
         )}
       </Row>

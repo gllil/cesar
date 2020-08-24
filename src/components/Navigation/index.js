@@ -7,13 +7,13 @@ const Navigation = () => {
     <Container>
       <Row className="justify-content-center mx-auto">
         <Col className="text-left mt-4  d-none d-md-block">
-          <a className="nav-link" href="/about">
+          <a className="nav-link-head" href="/about">
             <p>About Us</p>
           </a>
         </Col>
 
         <Col xs={12} md={8} className="text-center mt-4">
-          <a href="/" className="nav-link">
+          <a href="/" className="nav-link-head">
             <h3>
               <span className="title1">
                 CES
@@ -37,7 +37,7 @@ const Navigation = () => {
         </Col>
 
         <Col className="text-right mt-4 d-none d-md-block">
-          <a href="/gallery" className="nav-link">
+          <a href="/gallery" className="nav-link-head">
             <p>Our Work</p>
           </a>
         </Col>

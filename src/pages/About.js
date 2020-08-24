@@ -16,7 +16,7 @@ const About = () => {
                   work on cars, boats, and anything needs a cover. Everything is
                   custom to fit what you need. The company owner, Julio Abreu,
                   is focused on attention to detail and the highest quality
-                  workmanship. We prepare maticulously to ensure our work is
+                  workmanship. We prepare meticulously to ensure our work is
                   delivered on time and avoid delays. Please checkout the Our
                   Work link to see our craft.
                 </p>

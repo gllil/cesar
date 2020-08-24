@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Progress from "../Progress";
+import { motion } from "framer-motion";
 
 const UploadForm = () => {
   const [file, setFile] = useState(null);
@@ -21,10 +22,14 @@ const UploadForm = () => {
     <Container>
       <Row>
         <Col xs={12} className="text-center">
-          <label className="label">
+          <motion.label
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.8 }}
+            className="label"
+          >
             Upload
             <input className="input" type="file" onChange={handleChange} />
-          </label>
+          </motion.label>
         </Col>
       </Row>
       <Row>

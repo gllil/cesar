@@ -38,7 +38,7 @@ function Home() {
           <Jumbotron className="jumbotron" id="services">
             <Row>
               <Col>
-                <h3 className="title4">Services</h3>
+                <h3 className="title4 mb-3">Services</h3>
               </Col>
             </Row>
             <Row>
@@ -60,7 +60,7 @@ function Home() {
               </Col>
             </Row>
             <Row>
-              <Col>
+              <Col className="text-center">
                 <Button
                   variant="info"
                   size="lg"
@@ -86,7 +86,7 @@ function Home() {
               <Slides />
             </Row>
             <Row>
-              <Col>
+              <Col className="text-center">
                 <Button
                   variant="info"
                   size="lg"
@@ -105,7 +105,7 @@ function Home() {
           <Jumbotron className="jumbotron" id="contact">
             <Row>
               <Col>
-                <h3 className="title4">Contact Us</h3>
+                <h3 className="title4 mb-3">Contact Us</h3>
               </Col>
             </Row>
             <Row>
@@ -146,9 +146,56 @@ function Home() {
                     </p>
                   </Col>
                 </Row>
+                <Row>
+                  <Col>
+                    <p className="pb-4">
+                      Social Media:
+                      <br />
+                      <a
+                        href="https://www.facebook.com/cesarcanvasupholstery/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="socialMediaLink"
+                      >
+                        <i class="fab fa-facebook-square fa-lg"></i>
+                        <span> @cesarcanvasupholstery</span>
+                      </a>
+                    </p>
+                  </Col>
+                </Row>
               </Col>
               <Col xs={12} md={6}>
-                <GMaps />
+                <Row>
+                  <Col className="text-center pb-3">
+                    <p className="googleReviewContainer">
+                      <a
+                        href="https://g.page/cesarcanvasupholstery/review?rc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="socialMediaLink mb-3"
+                      >
+                        <i className="fab fa-google fa-2x"></i>
+                        <br />
+                        Leave a review on Google
+                        <br />
+                        <span className="stars">
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                          <i className="fas fa-star"></i>
+                        </span>
+                      </a>
+                    </p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <span>
+                      <GMaps />
+                    </span>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </Jumbotron>

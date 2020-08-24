@@ -12,6 +12,7 @@ const GMaps = () => {
         mapContainerStyle={{
           width: "90%",
           height: "200px",
+          margin: "0 auto",
         }}
         center={{
           lat: 41.988066,
