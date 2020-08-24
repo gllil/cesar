@@ -12,7 +12,6 @@ const BottomNav = () => {
           </a>
           <motion.a
             whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
             href="/"
             className="nav-link-icon"
           >
@@ -25,7 +24,6 @@ const BottomNav = () => {
           </a>
           <motion.a
             whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
             href="/about"
             className="nav-link-icon"
           >
@@ -38,7 +36,6 @@ const BottomNav = () => {
           </a>
           <motion.a
             whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
             href="/gallery"
             className="nav-link-icon"
           >

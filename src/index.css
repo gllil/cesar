@@ -86,6 +86,11 @@ p {
   text-decoration: none;
   color: #001c55;
 }
+
+.socialMediaLink {
+  text-decoration: none;
+  color: #001c55;
+}
 .emailLink:hover {
   text-decoration: underline;
 }
@@ -104,6 +109,7 @@ p {
   );
 }
 
+.nav-link,
 .nav-link-head {
   font-family: "Spartan", sans-serif;
   color: #fff;
