@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { auth } from "../firebase/config";
 import ImageGrid from "../components/ImageGrid";
-import { Modal, Image } from "react-bootstrap";
+import { Modal, Image, Button, Container } from "react-bootstrap";
 import UploadForm from "../components/UploadForm.js";
 
 const Admin = () => {
@@ -9,8 +10,25 @@ const Admin = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    auth.signOut();
+  };
+
   return (
     <div>
+      <Container className="text-right">
+        <Button
+          variant="warning"
+          onClick={(e) => handleClick(e)}
+          style={{ color: "red" }}
+          size="lg"
+        >
+          Logout
+        </Button>
+      </Container>
       <UploadForm />
       <ImageGrid setSelectedImg={setSelectedImg} setOpen={setOpen} />
       <Modal show={open} onHide={handleClose}>

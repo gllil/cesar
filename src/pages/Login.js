@@ -1,16 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import { AuthContext } from "../Auth";
 import firebase from "firebase";
 import { Container, Row, Col, Jumbotron, Button, Form } from "react-bootstrap";
 
-const Login = () => {
+const auth = firebase.auth();
+
+const Login = ({ history }) => {
   const [form, setForm] = useState({});
+
+  //get user info
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const loginForm = document.querySelector(".loginForm");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { dataset, value } = e.target;
-    console.log(dataset, value);
-    setForm({ ...form, [dataset.property]: value });
+    let email = form.email;
+    let password = form.password;
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        loginForm.reset();
+        history.push("/admin");
+      })
+      .catch((error) => alert(error));
   };
+
+  const { currentUser } = useContext(AuthContext);
+
+  if (currentUser) {
+    return <Redirect to="/admin" />;
+  }
 
   return (
     <Container>
@@ -19,13 +44,17 @@ const Login = () => {
           <Jumbotron className="jumbotron">
             <Row className="mt-2">
               <Col>
-                <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form
+                  className="loginForm"
+                  onChange={handleChange}
+                  onSubmit={(e) => handleSubmit(e)}
+                >
                   <Form.Group>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
+                      name="email"
                       type="email"
                       placeholder="Enter email"
-                      data-property="email"
                     />
                   </Form.Group>
 
@@ -34,7 +63,7 @@ const Login = () => {
                     <Form.Control
                       type="password"
                       placeholder="Password"
-                      data-property="password"
+                      name="password"
                     />
                   </Form.Group>
 
@@ -51,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

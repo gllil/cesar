@@ -2,17 +2,18 @@ import React from "react";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthProvider } from "./Auth";
 import Home from "./pages/Home";
 import BottomNav from "./components/BottomNav";
 import Gallery from "./pages/Gallery";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
-// import background from "./assets/images/background.jpg";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div>
+    <AuthProvider>
       <div className="main">
         <Navigation />
 
@@ -22,13 +23,13 @@ function App() {
             <Route exact path="/about" component={About} />
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/admin" component={Admin} />
+            <PrivateRoute exact path="/admin" component={Admin} />
           </Switch>
         </Router>
       </div>
       <Footer />
       <BottomNav />
-    </div>
+    </AuthProvider>
   );
 }
 

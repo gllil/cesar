@@ -167,6 +167,7 @@ p {
 
 .imageWrap {
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .modalImage {

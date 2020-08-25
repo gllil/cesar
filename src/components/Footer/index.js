@@ -14,7 +14,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               href="https://www.facebook.com/cesarcanvasupholstery/"
             >
-              <i class="fab fa-facebook-square fa-lg"></i>
+              <i className="fab fa-facebook-square fa-lg"></i>
             </a>
           </p>
         </Col>
