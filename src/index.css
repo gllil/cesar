@@ -219,6 +219,10 @@ p {
   display: none;
 }
 
+.address:hover {
+  color: #138496;
+}
+
 #firebaseui-auth-container {
   width: 100%;
   border-radius: 10px;

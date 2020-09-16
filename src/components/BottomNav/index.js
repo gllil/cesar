@@ -15,7 +15,7 @@ const BottomNav = () => {
             href="/"
             className="nav-link-icon"
           >
-            <i className="fas fa-home"></i>
+            <i className="fas fa-home fa-lg m-2"></i>
           </motion.a>
         </Col>
         <Col className=" d-block d-medium-none p-2 aboutBtn">
@@ -27,7 +27,7 @@ const BottomNav = () => {
             href="/about"
             className="nav-link-icon"
           >
-            <i className="fas fa-users"></i>
+            <i className="fas fa-users fa-lg m-2"></i>
           </motion.a>
         </Col>
         <Col className=" d-block d-medium-none p-2 galleryBtn">
@@ -39,7 +39,7 @@ const BottomNav = () => {
             href="/gallery"
             className="nav-link-icon"
           >
-            <i className="fas fa-images"></i>
+            <i className="fas fa-images fa-lg m-2"></i>
           </motion.a>
         </Col>
       </Row>

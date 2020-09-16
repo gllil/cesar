@@ -1,10 +1,71 @@
-import React from "react";
-import { Container, Jumbotron, Row, Col, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import {
+  Container,
+  Jumbotron,
+  Row,
+  Col,
+  Button,
+  Form,
+  Modal,
+  Spinner,
+} from "react-bootstrap";
 import GMaps from "../components/Map";
 import Slides from "../components/Slides";
+import { functions } from "../firebase/config";
 // import background from "./assets/images/background.jpg";
 
 function Home() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+  });
+  const [showMap, setShowMap] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [validated, setValidated] = useState(false);
+
+  function handleForm(e) {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  }
+
+  const openMaps = (e) => {
+    e.preventDefault();
+    setShowMap(true);
+  };
+
+  const mapClose = (e) => {
+    setShowMap(false);
+  };
+
+  const successClose = (e) => {
+    setShowSuccess(false);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formVal = e.currentTarget;
+    setShowSpinner(true);
+    if (formVal.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      setValidated(true);
+    }
+
+    const contactEmail = functions.httpsCallable("contactEmail");
+
+    const formInfo = document.getElementById("form");
+
+    contactEmail(form).then((res) => {
+      setShowSuccess(true);
+      setShowSpinner(false);
+      formInfo.reset();
+      setValidated(false);
+    });
+  };
+
   return (
     <Container>
       <Row className="mt-5">
@@ -112,13 +173,28 @@ function Home() {
               <Col xs={12} md={6}>
                 <Row>
                   <Col>
-                    <p>
+                    <p onClick={openMaps}>
                       Address:
                       <br />
-                      330 Gilbert Street
-                      <br />
-                      Mansfield, MA 02048
+                      <span className="address">
+                        330 Gilbert Street
+                        <br />
+                        Mansfield, MA 02048
+                      </span>
                     </p>
+                    <Modal show={showMap} onHide={mapClose}>
+                      <Modal.Body>
+                        <Container>
+                          <Row>
+                            <Col>
+                              <span>
+                                <GMaps />
+                              </span>
+                            </Col>
+                          </Row>
+                        </Container>
+                      </Modal.Body>
+                    </Modal>
                   </Col>
                 </Row>
                 <Row>
@@ -126,7 +202,14 @@ function Home() {
                     <p>
                       Phone:
                       <br />
-                      (401) 834-5632
+                      <a
+                        href="tel:401-834-5632"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="emailLink"
+                      >
+                        (401) 834-5632
+                      </a>
                     </p>
                   </Col>
                 </Row>
@@ -163,8 +246,6 @@ function Home() {
                     </p>
                   </Col>
                 </Row>
-              </Col>
-              <Col xs={12} md={6}>
                 <Row>
                   <Col className="text-center pb-3">
                     <p className="googleReviewContainer">
@@ -189,11 +270,59 @@ function Home() {
                     </p>
                   </Col>
                 </Row>
+              </Col>
+              <Col xs={12} md={6}>
                 <Row>
                   <Col>
-                    <span>
-                      <GMaps />
-                    </span>
+                    <Form
+                      onSubmit={handleSubmit}
+                      onChange={handleForm}
+                      validated={validated}
+                      id="form"
+                    >
+                      <h4>Get a quote</h4>
+                      <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" name="name" />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control type="email" name="email" />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Phone</Form.Label>
+                        <Form.Control
+                          name="phone"
+                          placeholder="(###) ###-####"
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>
+                          Describe the service are you needing?
+                        </Form.Label>
+                        <Form.Control as="textarea" name="service" />
+                      </Form.Group>
+                      <Button variant="info" type="submit">
+                        {showSpinner ? (
+                          <Spinner animation="border" />
+                        ) : (
+                          <div>
+                            Send <i className="fas fa-paper-plane ml-2" />
+                          </div>
+                        )}
+                      </Button>
+                      <Modal show={showSuccess} onHide={successClose}>
+                        <Modal.Body>
+                          <Container>
+                            <Row>
+                              <Col className="text-center">
+                                <h2>Sent Successfully</h2>
+                              </Col>
+                            </Row>
+                          </Container>
+                        </Modal.Body>
+                      </Modal>
+                    </Form>
                   </Col>
                 </Row>
               </Col>
