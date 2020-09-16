@@ -10,8 +10,8 @@ const GMaps = () => {
     <LoadScript googleMapsApiKey="secret">
       <GoogleMap
         mapContainerStyle={{
-          width: "90%",
-          height: "200px",
+          width: "100%",
+          height: "300px",
           margin: "0 auto",
         }}
         center={{
