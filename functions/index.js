@@ -31,9 +31,10 @@ exports.contactEmail = functions.https.onCall((data, context) => {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-      from: '"Quote Request" <garyjllil@outlook.com>', // sender address
-      to: "CesarSignWorks@gmail.com", // list of receivers
-      subject: "New quote request", // Subject line
+      from: `Quote Request <garyjllil@outlook.com>`, // sender address
+      replyTo: `${data.email}`,
+      to: "CesarSignWorks@icloud.com", // list of receivers
+      subject: `New quote request from ${data.name}`, // Subject line
       text: null,
       html: output, // html body
     });

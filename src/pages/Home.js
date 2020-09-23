@@ -9,6 +9,7 @@ import {
   Modal,
   Spinner,
 } from "react-bootstrap";
+import Recaptcha from "react-recaptcha";
 import GMaps from "../components/Map";
 import Slides from "../components/Slides";
 import { functions } from "../firebase/config";
@@ -25,11 +26,27 @@ function Home() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
   const [validated, setValidated] = useState(false);
+  const [verified, setVerified] = useState(false);
+  const [recaptchaError, setRecaptchaError] = useState(false);
+
+  const handleRecaptcha = (response) => {
+    if (response) {
+      setVerified(true);
+    }
+  };
+
+  const handleClose = () => {
+    setRecaptchaError(false);
+  };
 
   function handleForm(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   }
+
+  const handleOnload = () => {
+    console.log("successfully loaded recaptcha");
+  };
 
   const openMaps = (e) => {
     e.preventDefault();
@@ -46,24 +63,28 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formVal = e.currentTarget;
-    setShowSpinner(true);
+
     if (formVal.checkValidity() === false) {
       e.preventDefault();
       e.stopPropagation();
     } else {
       setValidated(true);
     }
+    if (verified) {
+      setShowSpinner(true);
+      const contactEmail = functions.httpsCallable("contactEmail");
 
-    const contactEmail = functions.httpsCallable("contactEmail");
+      const formInfo = document.getElementById("form");
 
-    const formInfo = document.getElementById("form");
-
-    contactEmail(form).then((res) => {
-      setShowSuccess(true);
-      setShowSpinner(false);
-      formInfo.reset();
-      setValidated(false);
-    });
+      contactEmail(form).then((res) => {
+        setShowSuccess(true);
+        setShowSpinner(false);
+        formInfo.reset();
+        setVerified(false);
+      });
+    } else {
+      setRecaptchaError(true);
+    }
   };
 
   return (
@@ -302,7 +323,28 @@ function Home() {
                         </Form.Label>
                         <Form.Control as="textarea" name="service" />
                       </Form.Group>
-                      <Button variant="info" type="submit">
+                      <Row>
+                        <Col className="text-center">
+                          <Recaptcha
+                            sitekey="6LcGwc8ZAAAAAH-9bv8TSK1ATsB4UR105myNvhqu"
+                            render="explicit"
+                            verifyCallback={handleRecaptcha}
+                            onloadCallback={handleOnload}
+                          />
+                          <Modal show={recaptchaError} onHide={handleClose}>
+                            <Modal.Body>
+                              <Container>
+                                <Row>
+                                  <Col className="text-center">
+                                    <h3>Please verify you are not a robot</h3>
+                                  </Col>
+                                </Row>
+                              </Container>
+                            </Modal.Body>
+                          </Modal>
+                        </Col>
+                      </Row>
+                      <Button className="mt-3" variant="info" type="submit">
                         {showSpinner ? (
                           <Spinner animation="border" />
                         ) : (
