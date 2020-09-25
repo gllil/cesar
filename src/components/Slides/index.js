@@ -6,7 +6,7 @@ const Slides = () => {
   const { docs } = useFirestore("images");
   return (
     <div>
-      <Carousel className="carouselWrapper">
+      <Carousel className="carouselWrapper" indicators={false}>
         {docs &&
           docs.map((doc) => (
             <Carousel.Item key={doc.id}>
