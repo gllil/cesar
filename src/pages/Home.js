@@ -198,7 +198,7 @@ function Home() {
                       Address:
                       <br />
                       <span className="address">
-                        330 Gilbert Street
+                        360 Otis St Rear
                         <br />
                         Mansfield, MA 02048
                       </span>
@@ -367,6 +367,19 @@ function Home() {
                     </Form>
                   </Col>
                 </Row>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="text-center mt-5">
+                <p>
+                  <em>We accept Credit Card</em>
+                  <br />
+                  <i className="m-1 fab fa-2x fa-cc-visa"></i>
+                  <i className="m-1 fab fa-2x fa-cc-mastercard"></i>
+                  <i className="m-1 fab fa-2x fa-cc-discover"></i>
+                  <i className="m-1 fab fa-2x fa-cc-amex"></i>
+                  <i className="m-1 fab fa-2x fa-cc-paypal"></i>{" "}
+                </p>
               </Col>
             </Row>
           </Jumbotron>

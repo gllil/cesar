@@ -15,8 +15,8 @@ const GMaps = () => {
           margin: "0 auto",
         }}
         center={{
-          lat: 41.988066,
-          lng: -71.255677,
+          lat: 41.987958,
+          lng: -71.255743,
         }}
         zoom={13}
         clickableIcons="false"
@@ -24,8 +24,8 @@ const GMaps = () => {
         <Marker
           onLoad={onLoad}
           position={{
-            lat: 41.988066,
-            lng: -71.255677,
+            lat: 41.987958,
+            lng: -71.255743,
           }}
         />
       </GoogleMap>
