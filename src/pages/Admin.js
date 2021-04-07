@@ -21,10 +21,10 @@ const Admin = () => {
     <div>
       <Container className="text-right">
         <Button
-          variant="warning"
+          variant="dark"
           onClick={(e) => handleClick(e)}
-          style={{ color: "red" }}
-          size="lg"
+          style={{ color: "white" }}
+          size="md"
         >
           Logout
         </Button>

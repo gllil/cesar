@@ -7,7 +7,7 @@ const GMaps = () => {
     console.log("marker: ", marker);
   };
   return (
-    <LoadScript googleMapsApiKey="secret">
+    <LoadScript googleMapsApiKey="">
       <GoogleMap
         mapContainerStyle={{
           width: "100%",

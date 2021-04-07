@@ -107,6 +107,7 @@ p {
     rgba(10, 36, 114, 0.5),
     rgba(0, 0, 0, 0)
   );
+  padding-bottom: 20px;
 }
 
 .nav-link,
@@ -145,15 +146,21 @@ p {
 }
 
 .label {
-  width: 180px;
+  width: 120px;
   height: 60px;
   font-size: 15pt;
   color: #fff;
   background-color: #138496;
-  padding: 10px 40px;
+  padding: 10px 25px;
   margin: 10px;
-  border-radius: 25px;
+  border-radius: 30px;
   box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+.iconLabel {
+  font-size: x-small;
+  display: block;
+  margin-top: 0px;
 }
 
 .images {
@@ -262,9 +269,14 @@ p {
 
 @media only screen and (max-width: 574px) {
   .images {
-    min-height: 100%;
-    min-width: 80%;
+    max-height: 150%;
+    
+    min-width: 100%;
     max-width: 150%;
+  }
+
+  .imageWrap{
+    width: 250px;
   }
   .nav-link-icon {
     display: block;

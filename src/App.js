@@ -14,7 +14,7 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <AuthProvider>
-      <div className="main">
+      <div className="main data-scroll-container">
         <Navigation />
 
         <Router>

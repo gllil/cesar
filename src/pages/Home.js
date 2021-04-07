@@ -13,7 +13,6 @@ import Recaptcha from "react-recaptcha";
 import GMaps from "../components/Map";
 import Slides from "../components/Slides";
 import { functions } from "../firebase/config";
-// import background from "./assets/images/background.jpg";
 
 function Home() {
   const [form, setForm] = useState({
@@ -149,7 +148,7 @@ function Home() {
                   className="mt-2"
                   href="#contact"
                 >
-                  Contact Us For More Information
+                  Contact Us For A Free Quote
                 </Button>
               </Col>
             </Row>
@@ -304,24 +303,25 @@ function Home() {
                       <h4>Get a quote</h4>
                       <Form.Group>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" name="name" />
+                        <Form.Control type="text" name="name" required />
                       </Form.Group>
                       <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" name="email" />
+                        <Form.Control type="email" name="email" required />
                       </Form.Group>
                       <Form.Group>
                         <Form.Label>Phone</Form.Label>
                         <Form.Control
                           name="phone"
                           placeholder="(###) ###-####"
+                          required
                         />
                       </Form.Group>
                       <Form.Group>
                         <Form.Label>
                           Describe the service are you needing?
                         </Form.Label>
-                        <Form.Control as="textarea" name="service" />
+                        <Form.Control as="textarea" name="service" required />
                       </Form.Group>
                       <Row>
                         <Col className="text-center">

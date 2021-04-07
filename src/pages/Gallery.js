@@ -12,7 +12,7 @@ const Gallery = () => {
   return (
     <div>
       <GalleryImageGrid setSelectedImg={setSelectedImg} setOpen={setOpen} />
-      <Modal show={open} onHide={handleClose}>
+      <Modal show={open} onHide={handleClose} size="xl">
         <Image src={selectedImg} rounded className="modalImage" />
       </Modal>
     </div>

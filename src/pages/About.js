@@ -13,12 +13,12 @@ const About = () => {
                 <p>
                   We are a local business in the Rhode Island Area. We have 25
                   years of experience with upholstery, canvas, and awnings. We
-                  work on cars, boats, and anything needs a cover. Everything is
-                  custom to fit what you need. The company owner, Julio Abreu,
-                  is focused on attention to detail and the highest quality
-                  workmanship. We prepare meticulously to ensure our work is
-                  delivered on time and avoid delays. Please checkout the Our
-                  Work link to see our craft.
+                  work on cars, boats, and anything that needs a cover.
+                  Everything is custom to fit what you need. The company owner,
+                  Julio Abreu, is focused on attention to detail and the highest
+                  quality workmanship. We prepare meticulously to ensure our
+                  work is delivered on time and avoid delays. Please check out
+                  the Our Work link to see our craft.
                 </p>
               </Col>
             </Row>

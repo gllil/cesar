@@ -2,13 +2,14 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <Container fluid>
       <Row>
         <Col className="footer text-center">
           <p>
-            <span>©</span> Copyright 2020-2023 <br /> Cesar Upholstery & Canvas
-            LLC <br /> Insured <br />{" "}
+            <span>©</span> Copyright {currentYear} <br /> Cesar Upholstery &
+            Canvas LLC <br /> Insured <br />{" "}
             <a
               target="_blank"
               rel="noopener noreferrer"
