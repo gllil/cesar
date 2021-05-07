@@ -7,7 +7,7 @@ const BottomNav = () => {
     <Container fluid className="bottom-nav text-center mt-5">
       <Row>
         <Col className=" d-block d-medium-none p-2 homeBtn">
-          <a href="/" className="nav-link">
+          <a href="/" className="nav-link-bottom">
             Home
           </a>
           <motion.a
@@ -20,7 +20,7 @@ const BottomNav = () => {
           </motion.a>
         </Col>
         <Col className=" d-block d-medium-none p-2 aboutBtn">
-          <a href="/about" className="nav-link">
+          <a href="/about" className="nav-link-bottom">
             About Us
           </a>
           <motion.a
@@ -33,7 +33,7 @@ const BottomNav = () => {
           </motion.a>
         </Col>
         <Col className=" d-block d-medium-none p-2 galleryBtn">
-          <a href="/gallery" className="nav-link">
+          <a href="/gallery" className="nav-link-bottom">
             Our Work
           </a>
           <motion.a

@@ -13,6 +13,7 @@ import Recaptcha from "react-recaptcha";
 import GMaps from "../components/Map";
 import Slides from "../components/Slides";
 import { functions } from "../firebase/config";
+import { projectFirestore, timestamp } from "../firebase/config";
 
 function Home() {
   const [form, setForm] = useState({
@@ -21,6 +22,7 @@ function Home() {
     phone: "",
     service: "",
   });
+  const [saveForm, setSaveForm] = useState(null);
   const [showMap, setShowMap] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
@@ -76,6 +78,13 @@ function Home() {
       const formInfo = document.getElementById("form");
 
       contactEmail(form).then((res) => {
+        const customerRef = projectFirestore.collection("customers");
+        const createdAt = timestamp();
+
+        customerRef
+          .add({ form, createdAt })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
         setShowSuccess(true);
         setShowSpinner(false);
         formInfo.reset();

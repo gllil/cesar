@@ -109,8 +109,8 @@ p {
   );
   padding-bottom: 20px;
 }
-
 .nav-link,
+.nav-link-bottom,
 .nav-link-head {
   font-family: "Spartan", sans-serif;
   color: #fff;
@@ -237,6 +237,14 @@ p {
   height: 100px;
 }
 
+.customerTable {
+  display: block;
+}
+
+.customerCard {
+  display: none;
+}
+
 @media only screen and (max-width: 990px) {
   .carouselImage {
     min-height: 100%;
@@ -265,17 +273,25 @@ p {
     max-width: 150%;
     height: 400px;
   }
+
+  .customerTable {
+    display: none;
+  }
+
+  .customerCard {
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 574px) {
   .images {
     max-height: 150%;
-    
+
     min-width: 100%;
     max-width: 150%;
   }
 
-  .imageWrap{
+  .imageWrap {
     width: 250px;
   }
   .nav-link-icon {
@@ -285,7 +301,7 @@ p {
     text-decoration: none;
   }
 
-  .nav-link {
+  .nav-link-bottom {
     display: none;
   }
 
