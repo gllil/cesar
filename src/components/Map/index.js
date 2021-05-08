@@ -7,7 +7,7 @@ const GMaps = () => {
     console.log("marker: ", marker);
   };
   return (
-    <LoadScript googleMapsApiKey="">
+    <LoadScript googleMapsApiKey={process.env.REACT_APP_MAPS_API_KEY}>
       <GoogleMap
         mapContainerStyle={{
           width: "100%",

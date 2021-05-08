@@ -5,6 +5,8 @@ const nodemailer = require("nodemailer");
 exports.contactEmail = functions.https.onCall((data, context) => {
   console.log(data);
 
+  console.log(process.env);
+
   const output = `
   <p>You have a new quote request</p>
   <h3>Contact Details</h3>
@@ -25,7 +27,7 @@ exports.contactEmail = functions.https.onCall((data, context) => {
       secure: false,
       auth: {
         user: "garyjllil@outlook.com", // generated ethereal user
-        pass: "", // generated ethereal password
+        pass: functions.config().contactemail.password, // generated ethereal password
       },
     });
 

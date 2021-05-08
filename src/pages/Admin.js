@@ -12,6 +12,8 @@ import {
   Row,
   Col,
   Card,
+  Accordion,
+  ModalBody,
 } from "react-bootstrap";
 import UploadForm from "../components/UploadForm.js";
 import useFirestore from "../hooks/useFirestore";
@@ -19,7 +21,11 @@ import useFirestore from "../hooks/useFirestore";
 const Admin = () => {
   const [selectedImg, setSelectedImg] = useState(null);
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const { docs } = useFirestore("customers");
+  const [id, setId] = useState(null);
+
   console.log(docs);
   const handleClose = () => {
     setOpen(false);
@@ -31,9 +37,24 @@ const Admin = () => {
     auth.signOut();
   };
 
-  const handleDelete = (id) => {
+  const toggleAccordion = () => {
+    setToggle(!toggle);
+  };
+
+  const handleDeleteClose = () => {
+    setOpenDelete(false);
+  };
+  const handleDeleteOpen = (idInfo) => {
+    setId(idInfo);
+    setOpenDelete(true);
+  };
+
+  const handleDelete = () => {
     const customerRef = projectFirestore.collection("customers");
-    customerRef.doc(id).delete();
+    customerRef
+      .doc(id)
+      .delete()
+      .then(() => setOpenDelete(false));
   };
 
   const convertToDate = (seconds) => {
@@ -69,7 +90,6 @@ const Admin = () => {
                     striped
                     bordered
                     variant="dark"
-                    responsive="md"
                     className="customerTable"
                   >
                     <thead>
@@ -92,7 +112,7 @@ const Admin = () => {
                             <td>{res.form.email}</td>
                             <td>{res.form.service}</td>
                             <td>
-                              <Button onClick={() => handleDelete(res.id)}>
+                              <Button onClick={() => handleDeleteOpen(res.id)}>
                                 Delete
                               </Button>
                             </td>
@@ -105,7 +125,7 @@ const Admin = () => {
                     docs.map((res) => (
                       <Card
                         key={res.id}
-                        className="customerCard"
+                        className="customerCard mt-3"
                         bg="dark"
                         text="white"
                       >
@@ -121,19 +141,91 @@ const Admin = () => {
                               </p>
                               <p>
                                 <strong>Phone:</strong>{" "}
-                                <em>{res.form.phone}</em>
+                                <em>
+                                  <a
+                                    className="customerContact"
+                                    href={`tel:${res.form.phone}`}
+                                  >
+                                    {res.form.phone}
+                                  </a>
+                                </em>
                               </p>
                               <p>
                                 <strong>Email:</strong>{" "}
-                                <em>{res.form.email}</em>
+                                <em>
+                                  <a
+                                    className="customerContact"
+                                    href={`mailto:${res.form.email}`}
+                                  >
+                                    {res.form.email}
+                                  </a>
+                                </em>
                               </p>
-                              <p>
-                                <strong>Message:</strong>{" "}
-                                <em>{res.form.service}</em>
-                              </p>
-                              <Button onClick={() => handleDelete(res.id)}>
-                                Delete
+
+                              <Accordion onSelect={toggleAccordion}>
+                                <Card bg="dark">
+                                  <Accordion.Toggle
+                                    as={Card.Header}
+                                    eventKey={res.id}
+                                  >
+                                    <p className="text-center">
+                                      {toggle && (
+                                        <strong>
+                                          Message{" "}
+                                          <i className="fas fa-chevron-up"></i>
+                                        </strong>
+                                      )}
+
+                                      {!toggle && (
+                                        <strong>
+                                          Message{" "}
+                                          <i className="fas fa-chevron-down"></i>
+                                        </strong>
+                                      )}
+                                    </p>
+                                  </Accordion.Toggle>
+                                  <Accordion.Collapse eventKey={res.id}>
+                                    <Card.Body>
+                                      <em>{res.form.service}</em>
+                                    </Card.Body>
+                                  </Accordion.Collapse>
+                                </Card>
+                              </Accordion>
+                              <Button
+                                className="m-3"
+                                onClick={() => handleDeleteOpen(res.id)}
+                                variant="secondary"
+                              >
+                                Delete Customer
                               </Button>
+                              <Modal
+                                show={openDelete}
+                                onHide={handleDeleteClose}
+                              >
+                                <Modal.Header closeButton>
+                                  Notification
+                                </Modal.Header>
+                                <ModalBody>
+                                  <Container>
+                                    <Row>
+                                      <Col>
+                                        <p>
+                                          Are you sure you want to delete
+                                          customer?
+                                        </p>
+                                      </Col>
+                                    </Row>
+                                  </Container>
+                                </ModalBody>
+                                <Modal.Footer>
+                                  <Button onClick={handleDelete}>
+                                    Confirm Delete
+                                  </Button>
+                                  <Button onClick={handleDeleteClose}>
+                                    Cancel
+                                  </Button>
+                                </Modal.Footer>
+                              </Modal>
                             </Col>
                           </Row>
                         </Container>

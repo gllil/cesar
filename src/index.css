@@ -122,6 +122,10 @@ p {
   text-decoration: none;
 }
 
+.nav-link-bottom {
+  display: none;
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -241,6 +245,11 @@ p {
   display: block;
 }
 
+.customerContact:link {
+  text-decoration: none;
+  color: #fff;
+}
+
 .customerCard {
   display: none;
 }
@@ -280,6 +289,13 @@ p {
 
   .customerCard {
     display: block;
+  }
+
+  .nav-link-icon {
+    display: block;
+    font-family: "Spartan", sans-serif;
+    color: #fff;
+    text-decoration: none;
   }
 }
 
