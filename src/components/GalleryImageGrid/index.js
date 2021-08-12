@@ -1,9 +1,10 @@
 import React from "react";
 import useFirestore from "../../hooks/useFirestore";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-import { motion } from "framer-motion";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+// import { motion } from "framer-motion";
 
-const GalleryImageGrid = ({ setSelectedImg, setOpen }) => {
+const GalleryImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
   const { docs } = useFirestore("images");
 
   const handleClick = (e, doc) => {
@@ -11,25 +12,35 @@ const GalleryImageGrid = ({ setSelectedImg, setOpen }) => {
     setSelectedImg(doc);
     setOpen(true);
   };
+
+  // const setBackgroundImage = (url, id) => {
+  //   const imageId = document.getElementById(id);
+  //   imageId.style.backgroundImage = `url(${url})`;
+  //   imageId.classList.add("blur-image");
+  // };
   return (
     <Container className="mt-5">
-      <Row>
+      <Row className="justify-content-center">
         {docs &&
           docs.map((doc) => (
-            <Col xs={12} sm={6} md={4} key={doc.id}>
-              <Row>
-                <Col
-                  className="imageWrap mt-2 text-center"
-                  onClick={(e) => handleClick(e, doc.url)}
-                >
-                  <motion.img
-                    whileHover={{ scale: 1.2 }}
-                    src={doc.url}
-                    rounded
-                    className="images"
-                  />
-                </Col>
-              </Row>
+            <Col
+              id={doc.id}
+              xs={12}
+              sm={4}
+              md={3}
+              lg={2}
+              key={doc.id}
+              className="imageWrap m-1"
+              onClick={(e) => handleClick(e, doc.url)}
+            >
+              <LazyLoadImage
+                src={doc.url}
+                className="images"
+                alt={doc.url}
+                effect="blur"
+                scrollPosition={scrollPosition}
+                // afterLoad={() => setBackgroundImage(doc.url, doc.id)}
+              />
             </Col>
           ))}
         {docs.length === 0 && (

@@ -1,13 +1,12 @@
 import React from "react";
 import useFirestore from "../../hooks/useFirestore";
-import firebase from "firebase";
+import { projectFirestore, projectStorage } from "../../firebase/config";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 // import useStorage from "../../hooks/useStorage";
-import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
-const ImageGrid = ({ setSelectedImg, setOpen }) => {
+const ImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
   const { docs } = useFirestore("images");
-  const db = firebase.firestore();
-  const storage = firebase.storage();
 
   const handleClick = (e, doc) => {
     e.preventDefault();
@@ -17,14 +16,15 @@ const ImageGrid = ({ setSelectedImg, setOpen }) => {
 
   const handleDelete = (e, id, url) => {
     e.preventDefault();
-    const imageRef = storage.refFromURL(url);
+    const imageRef = projectStorage.refFromURL(url);
     imageRef
       .delete()
       .then(() => {
         console.log("Document successfully deleted!");
       })
       .catch((error) => console.error("Error removing document: ", error));
-    db.collection("images")
+    projectFirestore
+      .collection("images")
       .doc(id)
       .delete()
       .then(() => {
@@ -34,20 +34,28 @@ const ImageGrid = ({ setSelectedImg, setOpen }) => {
   };
   return (
     <Container>
-      <Row>
+      <Row className="justify-content-center">
         {docs &&
           docs.map((doc) => (
-            <Col xs={12} sm={6} md={4} key={doc.id}>
-              <Row>
+            <Col xs={12} sm={4} md={3} lg={2} className="imageContentWrap m-1">
+              <Row className="justify-content-center">
                 <Col
-                  className="imageWrap mt-2 text-center"
+                  key={doc.id}
+                  className="imageWrap m-1"
                   onClick={(e) => handleClick(e, doc.url)}
                 >
-                  <Image src={doc.url} rounded className="images" />
+                  <LazyLoadImage
+                    src={doc.url}
+                    className="images"
+                    alt={doc.url}
+                    effect="blur"
+                    scrollPosition={scrollPosition}
+                    // afterLoad={() => setBackgroundImage(doc.url, doc.id)}
+                  />
                 </Col>
               </Row>
-              <Row>
-                <Col className="text-center m-1">
+              <Row className="justify-content-center">
+                <Col className="text-center">
                   <Button
                     variant="warning"
                     size="small"

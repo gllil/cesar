@@ -169,16 +169,25 @@ p {
 
 .images {
   min-width: 100%;
-  min-height: 100%;
-  max-width: 150%;
   height: 250px;
-  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
+}
+
+.blur-image {
+  background-size: cover;
 }
 
 .imageWrap {
   overflow: hidden;
-  border-radius: 10px;
+  max-width: 300px;
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  background-color: #333333;
+}
+
+.imageContentWrap {
+  min-width: 250px;
+  max-width: 300px;
 }
 
 .modalImage {
@@ -234,6 +243,10 @@ p {
   color: #138496;
 }
 
+.address {
+  cursor: pointer;
+}
+
 #firebaseui-auth-container {
   width: 100%;
   border-radius: 10px;
@@ -260,6 +273,13 @@ p {
     min-width: 100%;
     max-width: 150%;
     max-height: 432px;
+  }
+  .customerTable {
+    display: none;
+  }
+
+  .customerCard {
+    display: block;
   }
 }
 
@@ -300,16 +320,16 @@ p {
 }
 
 @media only screen and (max-width: 574px) {
-  .images {
-    max-height: 150%;
-
+  /* .images {
     min-width: 100%;
-    max-width: 150%;
+
+    height: 250px;
   }
 
   .imageWrap {
-    width: 250px;
-  }
+    overflow: hidden;
+    width: 150px;
+  } */
   .nav-link-icon {
     display: block;
     font-family: "Spartan", sans-serif;

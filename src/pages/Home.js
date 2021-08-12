@@ -27,6 +27,8 @@ function Home() {
   const [showSpinner, setShowSpinner] = useState(false);
   const [validated, setValidated] = useState(false);
   const [verified, setVerified] = useState(false);
+  const [otis, setOtis] = useState(false);
+  const [harbor, setHarbor] = useState(false);
   const [recaptchaError, setRecaptchaError] = useState(false);
 
   const handleRecaptcha = (response) => {
@@ -48,13 +50,20 @@ function Home() {
     console.log("successfully loaded recaptcha");
   };
 
-  const openMaps = (e) => {
+  const openMaps = (e, add) => {
     e.preventDefault();
     setShowMap(true);
+    if (add === "otisAdd") {
+      setOtis(true);
+    } else if (add === "harborAdd") {
+      setHarbor(true);
+    }
   };
 
   const mapClose = (e) => {
     setShowMap(false);
+    setOtis(false);
+    setHarbor(false);
   };
 
   const successClose = (e) => {
@@ -172,7 +181,9 @@ function Home() {
               </Col>
             </Row>
             <Row>
-              <Slides />
+              <Col>
+                <Slides />
+              </Col>
             </Row>
             <Row>
               <Col className="text-center">
@@ -201,22 +212,32 @@ function Home() {
               <Col xs={12} md={6}>
                 <Row>
                   <Col>
-                    <p onClick={openMaps}>
-                      Address:
+                    <p onClick={(e) => openMaps(e, "harborAdd")}>
+                      Locations:
                       <br />
+                      <span className="address">
+                        24 Harbor St
+                        <br />
+                        New Bedford, MA 02744
+                      </span>
+                    </p>
+                    <p onClick={(e) => openMaps(e, "otisAdd")}>
                       <span className="address">
                         360 Otis St Rear
                         <br />
                         Mansfield, MA 02048
+                        <br />
+                        <em>Appointment Only</em>
                       </span>
                     </p>
+
                     <Modal show={showMap} onHide={mapClose}>
                       <Modal.Body>
                         <Container>
                           <Row>
                             <Col>
                               <span>
-                                <GMaps />
+                                <GMaps otis={otis} harbor={harbor} />
                               </span>
                             </Col>
                           </Row>
@@ -268,7 +289,7 @@ function Home() {
                         rel="noopener noreferrer"
                         className="socialMediaLink"
                       >
-                        <i class="fab fa-facebook-square fa-lg"></i>
+                        <i className="fab fa-facebook-square fa-lg"></i>
                         <span> @cesarcanvasupholstery</span>
                       </a>
                     </p>

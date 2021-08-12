@@ -1,10 +1,9 @@
 import React, { useState, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import { AuthContext } from "../Auth";
-import firebase from "firebase";
-import { Container, Row, Col, Jumbotron, Button, Form } from "react-bootstrap";
 
-const auth = firebase.auth();
+import { auth } from "../firebase/config";
+import { Container, Row, Col, Jumbotron, Button, Form } from "react-bootstrap";
 
 const Login = ({ history }) => {
   const [form, setForm] = useState({});
