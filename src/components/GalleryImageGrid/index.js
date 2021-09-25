@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useFirestore from "../../hooks/useFirestore";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col, Spinner, Button } from "react-bootstrap";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 // import { motion } from "framer-motion";
 
 const GalleryImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
-  const { docs } = useFirestore("images");
+  const [limit, setLimit] = useState(16);
+  const [disable, setDisable] = useState(false);
+  const { docs } = useFirestore("images", limit);
+  console.log(docs.length, limit);
+
+  useEffect(() => {
+    if (limit !== docs.length) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [limit, docs.length]);
 
   const handleClick = (e, doc) => {
     e.preventDefault();
     setSelectedImg(doc);
     setOpen(true);
+  };
+
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setLimit(limit + 8);
   };
 
   // const setBackgroundImage = (url, id) => {
@@ -48,6 +64,13 @@ const GalleryImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
             <Spinner animation="border" />
           </Col>
         )}
+      </Row>
+      <Row>
+        <Col className="text-center m-5">
+          <Button hidden={disable} variant="info" onClick={handleLoadMore}>
+            Load More
+          </Button>
+        </Col>
       </Row>
     </Container>
   );

@@ -170,6 +170,7 @@ p {
 .images {
   min-width: 100%;
   height: 250px;
+  cursor: pointer;
 }
 
 .blur-image {

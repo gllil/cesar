@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useFirestore from "../../hooks/useFirestore";
 import { projectFirestore, projectStorage } from "../../firebase/config";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -6,7 +6,16 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 const ImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
-  const { docs } = useFirestore("images");
+  const [limit, setLimit] = useState(16);
+  const [disable, setDisable] = useState(false);
+  const { docs } = useFirestore("images", limit);
+  useEffect(() => {
+    if (limit !== docs.length) {
+      setDisable(true);
+    } else {
+      setDisable(false);
+    }
+  }, [limit, docs.length]);
 
   const handleClick = (e, doc) => {
     e.preventDefault();
@@ -32,6 +41,12 @@ const ImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
       })
       .catch((error) => console.error("Error removing document: ", error));
   };
+
+  const handleLoadMore = (e) => {
+    e.preventDefault();
+    setLimit(limit + 8);
+  };
+
   return (
     <Container>
       <Row className="justify-content-center">
@@ -72,6 +87,13 @@ const ImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
             <h3>Click Upload to add photos to your gallery</h3>
           </Col>
         )}
+      </Row>
+      <Row>
+        <Col className="text-center m-5">
+          <Button hidden={disable} variant="info" onClick={handleLoadMore}>
+            Load More
+          </Button>
+        </Col>
       </Row>
     </Container>
   );
