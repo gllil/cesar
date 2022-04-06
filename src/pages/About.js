@@ -11,7 +11,7 @@ const About = () => {
               <Col>
                 <h3 className="title3">About Us</h3>
                 <p>
-                  We are a local business in the Rhode Island Area. We have 25
+                  We are a local business in the New England Area. We have 25
                   years of experience with upholstery, canvas, and awnings. We
                   work on cars, boats, and anything that needs a cover.
                   Everything is custom to fit what you need. The company owner,

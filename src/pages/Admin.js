@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { auth, projectFirestore } from "../firebase/config";
 import ImageGrid from "../components/ImageGrid";
+import { DateTime } from "luxon";
 import {
   Modal,
   Image,
@@ -57,17 +58,6 @@ const Admin = () => {
       .then(() => setOpenDelete(false));
   };
 
-  const convertToDate = (seconds) => {
-    let epocMilliseconds = seconds * 1000;
-    let currentDate = new Date(epocMilliseconds);
-    let date = currentDate.getDate();
-    let month = currentDate.getMonth();
-    let year = currentDate.getFullYear();
-
-    let dateString = month + "/" + date + "/" + year;
-    return dateString;
-  };
-
   return (
     <div>
       <Container className="text-right">
@@ -106,7 +96,11 @@ const Admin = () => {
                       {docs &&
                         docs.map((res) => (
                           <tr key={res.id}>
-                            <td>{convertToDate(res.createdAt.seconds)}</td>
+                            <td>
+                              {DateTime.fromSeconds(
+                                res.createdAt.seconds
+                              ).toLocaleString(DateTime.DATETIME_FULL)}
+                            </td>
                             <td>{res.form.name}</td>
                             <td>{res.form.phone}</td>
                             <td>{res.form.email}</td>
@@ -134,7 +128,11 @@ const Admin = () => {
                             <Col>
                               <p>
                                 <strong>Date:</strong>{" "}
-                                <em>{convertToDate(res.createdAt.seconds)}</em>
+                                <em>
+                                  {DateTime.fromSeconds(
+                                    res.createdAt.seconds
+                                  ).toLocaleString(DateTime.DATETIME_FULL)}
+                                </em>
                               </p>
                               <p>
                                 <strong>Name:</strong> <em>{res.form.name}</em>

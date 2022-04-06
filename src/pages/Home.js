@@ -252,12 +252,12 @@ function Home() {
                       Phone:
                       <br />
                       <a
-                        href="tel:401-834-5632"
+                        href="tel:774-328-9327"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="emailLink"
                       >
-                        (401) 834-5632
+                        (774) 328-9327
                       </a>
                     </p>
                   </Col>

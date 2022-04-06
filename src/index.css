@@ -39,6 +39,20 @@ code {
   color: #fff;
 }
 
+.slogan {
+  font-size: 24px;
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  color: #fff;
+}
+
+.slogan:link {
+  text-decoration: none;
+  color: #fff;
+}
+
 .title2Sub {
   font-family: "Spartan", sans-serif;
   color: #fff;

@@ -31,7 +31,9 @@ const Navigation = () => {
                 CANVAS & UPHOLSTERY <span className="title2Sub">LLC</span>
               </span>
               <br />
-              <span className="title2">(401) 834-5632</span>
+              <span className="title2">(774) 328-9327</span>
+              <br />
+              <span className="slogan">"Workmanship you can be proud of!"</span>
             </h3>
           </a>
         </Col>

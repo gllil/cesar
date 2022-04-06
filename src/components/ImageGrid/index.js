@@ -52,10 +52,16 @@ const ImageGrid = ({ setSelectedImg, setOpen, scrollPosition }) => {
       <Row className="justify-content-center">
         {docs &&
           docs.map((doc) => (
-            <Col xs={12} sm={4} md={3} lg={2} className="imageContentWrap m-1">
+            <Col
+              xs={12}
+              sm={4}
+              md={3}
+              lg={2}
+              className="imageContentWrap m-1"
+              key={doc.id}
+            >
               <Row className="justify-content-center">
                 <Col
-                  key={doc.id}
                   className="imageWrap m-1"
                   onClick={(e) => handleClick(e, doc.url)}
                 >
